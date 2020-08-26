@@ -4,11 +4,13 @@
   "description": "Application NodeJS + Clean Architecture +TDD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll",
+    "test:staged": "jest"
   },
   "lint-staged": {
     "*.js": [
       "standard --fix",
+      "npm run test:staged",
       "git add"
     ]
   },
@@ -16,6 +18,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "standard": {
+    "env": ["jest"]
   },
   "author": "",
   "license": "ISC",
@@ -25,5 +30,7 @@
     "lint-staged": "^10.2.13",
     "standard": "^14.3.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
